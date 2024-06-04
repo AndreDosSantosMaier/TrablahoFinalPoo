@@ -3,9 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Tela de Home</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-image: linear-gradient(90deg,#527853, #F9E8D9);
+        }
+        .cabecalho{
+            text-align: center;
+            font-size: xx-large;
+            display: grid;
+            justify-content: end;
+            grid-template-columns: 35% 35%;
+        }
+        button{
+            background-color: black;
+            border: none;
+            padding: 50px;
+            width: 100%;
+            border-radius: 30px;
+            color: beige;
+            font-size: 30px;
+            size: 60px;
+        }
+        button:hover {
+            background-color: #EE7214;
+            cursor: pointer;
+        }
+        .one{
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 50px;
+            border-radius: 15px;
+            color: beige;
+            size: 60px;
+        }
+        .two{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 90px;
+            border-radius: 30px;
+            color: beige;
+        }
+        .three{
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 40px;
+            border-radius: 15px;
+            color: beige;
+        }
+    </style>
 </head>
 <body>
-    
+    <header class="cabecalho">
+        Ola {(user_name)} seja bem-vindo
+    </header>
+
+    <div class="one">
+        <button type="text" placeholder="botao1">Cadastrar Usuarios</button>
+      </div>
+      <br><br><br><br>
+      <div class="two">
+        <button type="text" placeholder="botao2">Cadastrar Quartos</button>
+      </div>
+      <br><br><br>
+      <div class="three">
+        <button type="text" placeholder="botao3">Cadastrar Atividades</button>
+      </div>
+      <br><br><br>
 </body>
 </html>
