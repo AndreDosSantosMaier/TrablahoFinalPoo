@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 
 from database.db import db
-
+from routes.routeIndex import routeIndex
 
 class MyServer():
     def __init__(self):

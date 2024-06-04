@@ -1,4 +1,4 @@
-from routes.homeRoute import homeRoutes
+from routes.loginRoute import loginRoutes
 
 def routeIndex(app):
-    homeRoutes(app=app)
+    loginRoutes(app=app)
