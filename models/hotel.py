@@ -1,21 +1,19 @@
 from database.db import db
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
-class Hoteis(db.Model):
+
+class Hotel(db.Model):
     def to_dict(self):
         return{
             'codigo': self.codigo,
             'gerente':self.gerente,
-            'endereco': self.endereco,
+            'cidade': self.cidade,
             'telefone': self.telefone,
         }
-    codigo =  db.Column(db.Integer,primary_key=True)
+    codigo =  db.Column(db.Integer, primary_key = True, unique = True, autoincrement=True )
     gerente = db.Column(db.String(70))
-    endereco = db.Column(db.String(100))
+    cidade = db.Column(db.String(100))
     telefone =  db.Column(db.Integer)
 
-    def __init__(self,codigo, gerente, telefone, endereco):
-        self.codigo = codigo
+    def __init__(self, gerente, cidade, telefone):
         self.gerente = gerente
-        self.endereco = endereco
+        self.cidade = cidade
         self.telefone = telefone
