@@ -40,18 +40,54 @@
             cursor: pointer;
         }
         .cabecalho{
-            width: 35%;
-            display: grid;
-            align-items: flex-end;
-            justify-content: end;
-  grid-template-columns: 35% 35%;
+            width: 30%;
+            display:flex;
+            align-items:left;
+            justify-content: left;
+            grid-template-columns: 35% 35%;
+            padding: auto;
+            position: absolute;        
+        }
+        .um{
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            transform: translate(-50%,-50%);
+            padding: 50px;
+            border-radius: 15px;
+            color: beige;
+            size: 60px;
+        }
+        .dois{
+            position: absolute;
+            top: 25%;
+            left: 33%;
+            transform: translate(-50%,-50%);
+            padding: 50px;
+            border-radius: 15px;
+            color: beige;
+            size: 60px;
+        }
+        .nessa_pagina{
+            background-color: #b85000;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            color: beige;
+            font-size: 15px;
         }
     </style>
 </head>
 <body>
     <header class="cabecalho">
-        <button> Login </button>
-        <button> Contatos</button>
+            <div class="um">
+                <button class="nes"> Login </button>
+            </div>
+            <br>
+            <div class="dois">
+                <button> Contatos</button>
+            </div>
     </header>
     <div class="tela-login">
         <h1>

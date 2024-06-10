@@ -4,8 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Usuarios</title>
+    <style>
+         body {
+            font-family: Arial;
+            background-image: linear-gradient(90deg,#527853, #F9E8D9);
+        }
+        button {
+            background-color: #F7B787;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            color: beige;
+            font-size: 15px;
+        }
+        button:hover {
+            background-color: #EE7214;
+            cursor: pointer;
+        }
+        .quadrado {
+            width: calc(100vw - 30px);  /* Largura do quadrado menos 20px (10px de cada lado) */
+            height: calc(100vh - 30px);  /* Altura do quadrado menos 20px (10px de cada lado) */
+            background-color: rgb(0, 0, 0);  /* Cor de fundo do quadrado */
+            margin: 10px;  /* Margem de 10px em todos os lados */
+        }
+        .tabela{
+            color: white;
+            align-content: center;
+        }
+        
+    </style>
 </head>
 <body>
-    
+    <div class="quadrado">
+        <table class="tabela">
+        <tr>
+          <th>Usuarios</th>
+          <th>Codigos</th>
+          <th>Quartos</th>
+        </tr>
+        <br>
+        <tr>
+          <td align="center">Alfreds Futterkiste</td>
+          <td align="center">1</td>
+          <td align="center">Simples</td>
+        </tr>
+        <tr>
+          <td align="center">Gabriel Domingos Marques </td>
+          <td align="center">2</td>
+          <td align="center">Supreme</td>
+        </tr>
+
+        <tr>
+        </tr>
+      </table>
+    </div>
 </body>
 </html>
