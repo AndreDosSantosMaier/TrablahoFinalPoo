@@ -1,6 +1,7 @@
 from flask import request
 from database.db import db
 from models.cliente import Clientes
+from models.hotel import Hotel
 from flask import render_template
 
 
@@ -18,7 +19,6 @@ def clienteController():
         try:
             data = Clientes.query.all()
             cliente = {'clientes': [cliente.to_dict() for cliente in data]}
-            
             return cliente,200
         except Exception as e:
             return 'O Quarto nao foi encontrado. Erro: {}'.format(str(e)),405
