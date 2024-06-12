@@ -8,6 +8,16 @@
         body {
             font-family: Arial;
             background-image: linear-gradient(90deg,#527853, #F9E8D9);
+            font-size: x-large;
+        }
+        .caixa {
+            width: calc(90vw - 20px);  /* Largura do quadrado menos 20px (10px de cada lado) */
+            height: calc(90vw - 20px);  /* Altura do quadrado menos 20px (10px de cada lado) */
+            background-color: rgb(0, 0, 0);  /* Cor de fundo do quadrado */
+            margin: 10px;  /* Margem de 10px em todos os lados */
+            align-items: center;
+            align-content: center;
+            position: absolute;
         }
         .cabecalho{
             text-align: center;
@@ -30,33 +40,67 @@
             background-color: #EE7214;
             cursor: pointer;
         }
-        .one{
+        .topnavQU {
+            background-color: #333;
+            overflow: hidden;
             position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            padding: 50px;
-            border-radius: 15px;
-            color: beige;
-            size: 60px;
+            top: 4%;
+            left: 40%;
         }
-        .two{
+        .topnavQQ {
+            background-color: #333;
+            overflow: hidden;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            padding: 90px;
-            border-radius: 30px;
-            color: beige;
+            top: 13%;
+            left: 40%;
         }
-        .three{
+        .topnavQA {
+            background-color: #333;
+            overflow: hidden;
             position: absolute;
-            top: 75%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            padding: 40px;
-            border-radius: 15px;
-            color: beige;
+            top: 20%;
+            left: 40%;
+        }
+/* Style the links inside the navigation bar */
+        .topnavQU a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .topnavQQ a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .topnavQA a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+/* Change the color of links on hover */
+        .topnavQU a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .topnavQQ a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .topnavQA a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .escritas {
+            font-size: x-large;
         }
     </style>
 </head>
@@ -64,18 +108,16 @@
     <header class="cabecalho">
         Ola {(user_name)} seja bem-vindo
     </header>
-
-    <div class="one">
-        <button type="text" placeholder="botao1">Cadastrar Usuarios</button>
-      </div>
-      <br><br><br><br>
-      <div class="two">
-        <button type="text" placeholder="botao2">Cadastrar Quartos</button>
-      </div>
-      <br><br><br>
-      <div class="three">
-        <button type="text" placeholder="botao3">Cadastrar Atividades</button>
-      </div>
-      <br><br><br>
+    <div class="caixa">
+        <div class="topnavQU">
+            <a href="./cadastro_usuarios.html" class="escritas">Cadastrar Usuarios</a>
+        </div>
+        <div class="topnavQQ">
+            <a href="./cadastro_quartos.html">Cadastrar Quartos</a>
+        </div>
+        <div class="topnavQA">
+            <a class="escritas" href="./cadastro_atividades.html">Cadastrar Atividades</a>
+        </div>
+    </div>
 </body>
 </html>
