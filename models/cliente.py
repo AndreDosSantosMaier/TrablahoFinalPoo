@@ -15,11 +15,12 @@ class Clientes(db.Model):
     nome = db.Column(db.String(70))
     telefone =  db.Column(db.Integer)
     codhotel = db.Column(ForeignKey('hotel.codigo'))
-    hotel = relationship('Hoteis', backref= 'cliente')
-    codquarto = db.Column(ForeignKey('quarto.codigo'))
-    quarto = relationship('Quartos', backref= 'cliente')
-    codatividade = db.Column(ForeignKey('atividade.codigo'))
-    atividade = relationship('Atividade', backref= 'cliente')
+    hotel = relationship('Hotel', backref= 'clientes')
+    codquarto = db.Column(ForeignKey('quartos.codigo'))
+    quarto = relationship('Quartos', backref= 'clientes')
+    codatividade = db.Column(ForeignKey('atividades.codigo'))
+    atividade = relationship('Atividades', backref= 'clientes')
+    
     def __init__(self,cpf, nome, telefone, codhotel, codquarto, codatividade):
         self.cpf = cpf
         self.nome = nome

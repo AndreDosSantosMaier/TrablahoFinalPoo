@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisao</title>
+</head>
+<body>
+    <h1>Atividades</h1>
+    <input id = "descricao" placeholder="Descricao">
+    <input id = "preco" placeholder="Preco">
+    <input id = "horario" placeholder="Horario">
+    <input id = "local" placeholder="Local">
+    <input id = "codhotel" placeholder="Codigo do Hotel">
+    
+    <button onclick="addAtividades()">Adicionar Atividade</button>
+    <script>
+
+
+        async function getAtividades(){
+            const response = await fetch("http://localhost:3000/atividades",{
+                method: "GET",
+            });
+            const data = await response.json() //aguarda uma resposta do get antes de executar um script
+            const paragrafos = data.atividades.map(function(atividade){
+                return '<p>Codigo :' + atividade.codigo +
+                    'ㅤㅤ Descricao :' + atividade.descricao +
+                    'ㅤㅤ Preco :' + atividade.preco + 
+                    'ㅤㅤ Horario :' + atividade.horario +
+                    'ㅤㅤ Local :' + atividade.local +
+                    'ㅤㅤ Codigo Do Hotel :' + atividade.codhotel + '' + '</p>';
+            });
+
+            document.body.innerHTML += paragrafos.join("");
+            console.log(data.hotel)
+        }
+        getAtividades()
+
+        async function addAtividades() {
+            let descricao = document.getElementById("descricao").value;
+            let preco = document.getElementById("preco").value;
+            let horario = document.getElementById("horario").value;
+            let local = document.getElementById("local").value;
+            let codhotel = document.getElementById("codhotel").value;
+
+            let data = {
+                descricao: descricao,
+                preco: preco,
+                horario: horario,
+                local: local,
+                codhotel: codhotel
+            };
+
+            try {
+          const response = await fetch("http://localhost:3000/atividades", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "Application/Json",
+            },
+          });
+          alert("Hotel adicionado com sucesso!");
+
+        } catch (error) {
+          new Error(error);
+        }
+        console.log(response);
+        
+        }
+    </script>
+</body>
+</html>
