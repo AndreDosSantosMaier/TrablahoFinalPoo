@@ -22,3 +22,15 @@ def clienteController():
             return cliente,200
         except Exception as e:
             return 'O Quarto nao foi encontrado. Erro: {}'.format(str(e)),405
+    elif request.method == "DELETE":
+        try:
+            data = request.get_json()
+            delete_cliente = data["cpf"]
+            cliente = Clientes.query.get(delete_cliente)
+            if cliente is None:
+                return {'error':'Cliente nao encontrado'}, 404
+            db.session.delete(cliente)
+            db.session.commit()
+            return 'Cliente deletado com sucesso',202
+        except Exception as e:
+            return 'Não foi possivel deletar o Cliente'

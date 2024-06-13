@@ -14,7 +14,29 @@
     <input id = "codhotel" placeholder="Codigo do Hotel">
     
     <button onclick="addAtividades()">Adicionar Atividade</button>
+    <p id="paragrafo_get"></p>
     <script>
+      async function excludeAtividade(id){
+        let data = {
+                codigo: id
+            };
+            try {
+          const response = await fetch("http://localhost:3000/atividades", {
+            method: "DELETE",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "Application/Json",
+            },
+          });
+
+          alert("Quarto removido com sucesso!");
+
+        } catch (error) {
+          new Error(error);
+        }
+        getAtividades()
+        
+        }
 
 
         async function getAtividades(){
@@ -28,10 +50,10 @@
                     'ㅤㅤ Preco :' + atividade.preco + 
                     'ㅤㅤ Horario :' + atividade.horario +
                     'ㅤㅤ Local :' + atividade.local +
-                    'ㅤㅤ Codigo Do Hotel :' + atividade.codhotel + '' + '</p>';
+                    'ㅤㅤ Codigo Do Hotel :' + atividade.codhotel + 'ㅤ' +  '<button onclick="excludeAtividade('+atividade.codigo+')">Excluir</button>' + '</p>';
             });
 
-            document.body.innerHTML += paragrafos.join("");
+            document.getElementById('paragrafo_get').innerHTML = paragrafos.join("");
             console.log(data.hotel)
         }
         getAtividades()
@@ -59,7 +81,8 @@
               "Content-Type": "Application/Json",
             },
           });
-          alert("Hotel adicionado com sucesso!");
+          getAtividades()
+          alert("Atividade adicionada com sucesso!");
 
         } catch (error) {
           new Error(error);

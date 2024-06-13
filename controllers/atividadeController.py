@@ -22,3 +22,16 @@ def atividadesController():
             return teste,200
         except Exception as e:
             return 'O Quarto nao foi encontrado. Erro: {}'.format(str(e)),405
+        
+    elif request.method == "DELETE":
+        try:
+            data = request.get_json()
+            delete_atividade = data["codigo"]
+            atividade = Atividades.query.get(delete_atividade)
+            if atividade is None:
+                return {'error':'Quarto nao encontrado'}, 404
+            db.session.delete(atividade)
+            db.session.commit()
+            return 'Quarto deletado com sucesso',202
+        except Exception as e:
+            return 'Não foi possivel deletar o quarto'

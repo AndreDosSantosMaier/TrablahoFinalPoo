@@ -22,3 +22,15 @@ def hotelController():
             return teste,200
         except Exception as e:
             return 'O usuario nao foi encontrado. Erro: {}'.format(str(e)),405
+    elif request.method == "DELETE":
+        try:
+            data = request.get_json()
+            delete_hotel = data["codigo"]
+            hotel = Hotel.query.get(delete_hotel)
+            if hotel is None:
+                return {'error':'Quarto nao encontrado'}, 404
+            db.session.delete(hotel)
+            db.session.commit()
+            return 'Quarto deletado com sucesso',202
+        except Exception as e:
+            return 'Não foi possivel deletar o quarto'

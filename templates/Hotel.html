@@ -12,7 +12,30 @@
     <input id = "telefone" placeholder="Telefone">
     
     <button onclick="addHotel()">Adicionar Hotel</button>
+    <p id="paragrafo_get"></p>
+
     <script>
+      async function excludeHotel(id){
+        let data = {
+                codigo: id
+            };
+            try {
+          const response = await fetch("http://localhost:3000/hotel", {
+            method: "DELETE",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "Application/Json",
+            },
+          });
+
+          alert("Quarto removido com sucesso!");
+
+        } catch (error) {
+          new Error(error);
+        }
+        getHoteis()
+        
+        }
 
 
         async function getHoteis(){
@@ -21,10 +44,13 @@
             });
             const data = await response.json() //aguarda uma resposta do get antes de executar um script
             const paragrafos = data.hotels.map(function(hotel){
-                return '<p>Codigo :' + hotel.codigo+ 'ㅤㅤ' + 'Cidade :' + hotel.cidade + 'ㅤㅤ Gerente :' + hotel.gerente + '' + '</p>';
+                return '<p>Codigo :' + hotel.codigo+ 
+                  'ㅤㅤ' + 'Cidade :' + hotel.cidade + 
+                  'ㅤㅤ Gerente :' + hotel.gerente + 
+                  'ㅤㅤ Telefone da Recepção :' + hotel.telefone +'ㅤ' +  '<button onclick="excludeHotel('+hotel.codigo+')">Excluir</button>' + '</p>';
             });
 
-            document.body.innerHTML += paragrafos.join("");
+            document.getElementById("paragrafo_get").innerHTML = paragrafos.join("");
             console.log(data.hotel)
         }
         getHoteis()

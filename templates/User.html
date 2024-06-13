@@ -6,12 +6,35 @@
     <title>User</title>
 </head>
 <body>
-    <h1>Adicionar Users</h1>
+    <h1>Usuarios</h1>
     <input id = "nome" placeholder="nome">
     <input id = "email" placeholder="Email">
     <input id = "senha" placeholder="Senha">
     <button onclick="addUser()">Adicionar Cliente</button>
+    <p id="paragrafo_get"></p>
     <script>
+
+        async function excludeUser(id){
+          let data = {
+                  codigo: id
+              };
+              try {
+            const response = await fetch("http://localhost:3000/user", {
+              method: "DELETE",
+              body: JSON.stringify(data),
+              headers: {
+                "Content-Type": "Application/Json",
+              },
+            });
+            getUser()
+            alert("Usuario removido com sucesso!");
+
+          } catch (error) {
+            new Error(error);
+          }
+          console.log(response);
+          
+        }
 
 
         async function getUser(){
@@ -20,12 +43,14 @@
             });
             const data = await response.json() //aguarda uma resposta do get antes de executar um script
             const paragrafos = data.users.map(function(user){
-                return '<p>' + user.nome + '' + '</p>';
+                return '<p>Codigo: ' + user.codigo +
+                "ㅤㅤNome: "+user.nome+
+                "ㅤㅤE-mail: "+user.email+ 'ㅤ' + '<button onclick="excludeUser('+user.codigo+')">Excluir</button>' + '</p>';
             });
-
-            document.body.innerHTML += paragrafos.join("");
+            document.getElementById('paragrafo_get').innerHTML = paragrafos.join("");
             console.log(data.user)
         }
+
         getUser()
 
         async function addUser() {
@@ -47,13 +72,12 @@
               "Content-Type": "Application/Json",
             },
           });
-          
+          getUser()
           alert("Usuário adicionado com sucesso!");
         } catch (error) {
           new Error(error);
         }
         console.log(response);
-        
         }
     </script>
 </body>

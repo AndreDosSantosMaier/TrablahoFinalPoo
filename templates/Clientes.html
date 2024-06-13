@@ -13,9 +13,31 @@
     <input id = "codhotel" placeholder="Codigo do Hotel">
     <input id = "codquarto" placeholder="Codigo do Quarto">
     <input id = "codatividade" placeholder="Codigo da Atividade">
-    
     <button onclick="addQuarto()">Adicionar Quartos</button>
+    <p id="paragrafo_get"></p>
     <script>
+      
+      async function excludeClientes(id){
+        let data = {
+                cpf: id
+            };
+            try {
+          const response = await fetch("http://localhost:3000/clientes", {
+            method: "DELETE",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "Application/Json",
+            },
+          });
+
+          alert("Quarto removido com sucesso!");
+
+        } catch (error) {
+          new Error(error);
+        }
+        getQuarto()
+        
+        }
 
 
         async function getQuarto(){
@@ -29,10 +51,10 @@
                     'ㅤㅤ Telefone :' + cliente.telefone + 
                     'ㅤㅤ Hotel :' + cliente.codhotel +
                     'ㅤㅤ Quarto :' + cliente.codquarto +
-                    'ㅤㅤ Atividade :' + cliente.codatividade +  '' + '</p>';
+                    'ㅤㅤ Atividade :' + cliente.codatividade +  'ㅤ' +  '<button onclick="excludeClientes('+cliente.cpf+')">Excluir</button>' + '</p>';
             });
 
-            document.body.innerHTML += paragrafos.join("");
+            document.getElementById("paragrafo_get").innerHTML = paragrafos.join("");
             console.log(data.quarto)
         }
         getQuarto()
@@ -64,7 +86,7 @@
               "Content-Type": "Application/Json",
             },
           });
-
+          getQuarto()
           alert("Cliente adicionado com sucesso!");
 
         } catch (error) {
