@@ -8,7 +8,7 @@ def atividadesController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            quarto = Atividades(data['descricao'], data['preco'], data['horario'], data['local'], data['codhotel'])
+            quarto = Atividades(data['descricao'], data['preco'], data['horario'], data['local'],)
             db.session.add(quarto)
             db.session.commit()
             return 'Quarto criado com sucesso',200

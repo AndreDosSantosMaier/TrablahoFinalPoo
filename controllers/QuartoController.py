@@ -8,7 +8,7 @@ def quartosController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            quarto = Quartos(data['capacidade'], data['codhotel'], data['numero'])
+            quarto = Quartos(data['capacidade'], data['numero'])
             db.session.add(quarto)
             db.session.commit()
             return 'Quarto criado com sucesso',200

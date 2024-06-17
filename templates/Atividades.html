@@ -6,12 +6,14 @@
     <title>Atividades</title>
 </head>
 <body>
+    <button onclick="window.location = 'hub'">voltar</button>
     <h1>Adicionar Atividades</h1>
+    
     <input id = "descricao" placeholder="Descricao">
     <input id = "preco" placeholder="Preco">
     <input id = "horario" placeholder="Horario">
     <input id = "local" placeholder="Local">
-    <input id = "codhotel" placeholder="Codigo do Hotel">
+   
     
     <button onclick="addAtividades()">Adicionar Atividade</button>
     <p id="paragrafo_get"></p>
@@ -50,11 +52,10 @@
                     'ㅤㅤ Preco :' + atividade.preco + 
                     'ㅤㅤ Horario :' + atividade.horario +
                     'ㅤㅤ Local :' + atividade.local +
-                    'ㅤㅤ Codigo Do Hotel :' + atividade.codhotel + 'ㅤ' +  '<button onclick="excludeAtividade('+atividade.codigo+')">Excluir</button>' + '</p>';
+                      'ㅤ' +  '<button onclick="excludeAtividade('+atividade.codigo+')">Excluir</button>' + '</p>';
             });
 
             document.getElementById('paragrafo_get').innerHTML = paragrafos.join("");
-            console.log(data.hotel)
         }
         getAtividades()
 
@@ -63,14 +64,13 @@
             let preco = document.getElementById("preco").value;
             let horario = document.getElementById("horario").value;
             let local = document.getElementById("local").value;
-            let codhotel = document.getElementById("codhotel").value;
+            
 
             let data = {
                 descricao: descricao,
                 preco: preco,
                 horario: horario,
                 local: local,
-                codhotel: codhotel
             };
 
             try {

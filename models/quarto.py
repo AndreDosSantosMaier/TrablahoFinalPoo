@@ -6,18 +6,14 @@ class Quartos(db.Model):
         return{
             'codigo': self.codigo,
             'capacidade':self.capacidade,
-            'codhotel': self.codhotel,
             'numero': self.numero
         }
     codigo =  db.Column(db.Integer,primary_key=True)
     capacidade = db.Column(db.String(70))
     numero = db.Column(db.String(3))
-    codhotel = db.Column(ForeignKey('hotel.codigo'))
-    hotel = relationship('Hotel', backref= 'quarto')
 
 
-    def __init__(self, capacidade, codhotel, numero):
+    def __init__(self, capacidade, numero):
         self.capacidade = capacidade
-        self.codhotel = codhotel
         self.numero = numero
         

@@ -6,9 +6,10 @@
     <title>Quartos</title>
 </head>
 <body>
+  <button onclick="window.location = 'hub'">voltar</button>
     <h1>Adicionar Quartos</h1>
+    
     <input id = "capacidade" placeholder="Capacidade">
-    <input id = "codhotel" placeholder="Codigo Hotel">
     <input id = "numero" placeholder="Numero">
     
     <button onclick="addQuarto()">Adicionar Quartos</button>
@@ -47,7 +48,6 @@
             const paragrafos = data.quartos.map(function(quarto){
                 return '<p>Codigo :' + quarto.codigo+ 
                     'ㅤㅤ Capacidade :' + quarto.capacidade +
-                    'ㅤㅤ Codigo do Hotel :' + quarto.codhotel + 
                     'ㅤㅤ Numero do Quarto :' + quarto.numero + 'ㅤ' +  '<button onclick="excludeQuarto('+quarto.codigo+')">Excluir</button>' + '</p>';
             });
 
@@ -57,13 +57,11 @@
 
         async function addQuarto() {
             let capacidade = document.getElementById("capacidade").value;
-            let codhotel = document.getElementById("codhotel").value;
             let numero = document.getElementById("numero").value;
 
 
             let data = {
                 capacidade: capacidade,
-                codhotel: codhotel,
                 numero: numero
             };
 

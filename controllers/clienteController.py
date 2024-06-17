@@ -1,7 +1,6 @@
 from flask import request
 from database.db import db
 from models.cliente import Clientes
-from models.hotel import Hotel
 from flask import render_template
 
 
@@ -9,7 +8,7 @@ def clienteController():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            cliente = Clientes(data['cpf'], data['nome'], data['telefone'], data['codhotel'], data['codquarto'], data['codatividade'])
+            cliente = Clientes(data['cpf'], data['nome'], data['telefone'], data['codquarto'], data['codatividade'])
             db.session.add(cliente)
             db.session.commit()
             return 'Cliente criado com sucesso',200

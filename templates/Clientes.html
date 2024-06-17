@@ -6,11 +6,12 @@
     <title>Clientes</title>
 </head>
 <body>
+    <button onclick="window.location = 'hub'">voltar</button>
     <h1>Adicionar Clientes</h1>
+    
     <input id = "cpf" placeholder="CPF">
     <input id = "nome" placeholder="nome">
     <input id = "telefone" placeholder="telefone">
-    <input id = "codhotel" placeholder="Codigo do Hotel">
     <input id = "codquarto" placeholder="Codigo do Quarto">
     <input id = "codatividade" placeholder="Codigo da Atividade">
     <button onclick="addQuarto()">Adicionar Quartos</button>
@@ -49,7 +50,6 @@
                 return '<p>Cpf :' + cliente.cpf +
                     'ㅤㅤ Nome :' + cliente.nome + 
                     'ㅤㅤ Telefone :' + cliente.telefone + 
-                    'ㅤㅤ Hotel :' + cliente.codhotel +
                     'ㅤㅤ Quarto :' + cliente.codquarto +
                     'ㅤㅤ Atividade :' + cliente.codatividade +  'ㅤ' +  '<button onclick="excludeClientes('+cliente.cpf+')">Excluir</button>' + '</p>';
             });
@@ -63,7 +63,6 @@
             let cpf = document.getElementById("cpf").value;
             let nome = document.getElementById("nome").value;
             let telefone = document.getElementById("telefone").value;
-            let codhotel = document.getElementById("codhotel").value;
             let codquarto = document.getElementById("codquarto").value;
             let codatividade = document.getElementById("codatividade").value;
 
@@ -73,7 +72,6 @@
                 cpf: cpf,
                 nome: nome,
                 telefone: telefone,
-                codhotel: codhotel,
                 codquarto: codquarto,
                 codatividade: codatividade
             };
