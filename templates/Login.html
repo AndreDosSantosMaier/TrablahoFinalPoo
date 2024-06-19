@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <input id = "email" placeholder="E-mail">
+    <input id = "senha" placeholder="Senha">
+    
+    <button onclick="loginGet()">Logar</button>
+    <label id = 'paragrafo_login'></label>
+</body>
+
+<script>
+
+    async function loginGet(){
+        const response = await fetch("http://localhost:3000/login",{
+                method: "GET",
+            });
+            const data = await response.json()
+            let email = document.getElementById("email").value;
+            let senha = document.getElementById("senha").value;
+            const info = data.usuarios.map(function(usurio){
+                if (usurio.email == email && usurio.senha == senha) {
+                    return window.location = 'hub'
+                }          
+                else {
+                    document.getElementById("paragrafo_login").innerHTML = 'Usuario ou senha incorretos'
+                }
+            })
+            
+
+    }
+</script>
+</html>

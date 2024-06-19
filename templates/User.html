@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+  <button onclick="window.location = 'hub'">voltar</button>
+    <h1>Usuarios</h1>
+    
+    <input id = "nome" placeholder="nome">
+    <input id = "email" placeholder="Email">
+    <input id = "senha" placeholder="Senha">
+    <button onclick="addUser()">Adicionar Cliente</button>
+    <p id="paragrafo_get"></p>
+    <script>
+
+        async function excludeUser(id){
+          let data = {
+                  codigo: id
+              };
+              try {
+            const response = await fetch("http://localhost:3000/user", {
+              method: "DELETE",
+              body: JSON.stringify(data),
+              headers: {
+                "Content-Type": "Application/Json",
+              },
+            });
+            getUser()
+            alert("Usuario removido com sucesso!");
+
+          } catch (error) {
+            new Error(error);
+          }
+          console.log(response);
+          
+        }
+
+
+        async function getUser(){
+            const response = await fetch("http://localhost:3000/user",{
+                method: "GET",
+            });
+            const data = await response.json() //aguarda uma resposta do get antes de executar um script
+            const paragrafos = data.users.map(function(user){
+                return '<p>Codigo: ' + user.codigo +
+                "ㅤㅤNome: "+user.nome+
+                "ㅤㅤE-mail: "+user.email+ 'ㅤ' + '<button onclick="excludeUser('+user.codigo+')">Excluir</button>' + '</p>';
+            });
+            document.getElementById('paragrafo_get').innerHTML = paragrafos.join("");
+            console.log(data.user)
+        }
+
+        getUser()
+
+        async function addUser() {
+            let nome = document.getElementById("nome").value;
+            let senha = document.getElementById("senha").value;
+            let email = document.getElementById("email").value;
+
+            let data = {
+                nome: nome,
+                senha: senha,
+                email: email
+            };
+
+            try {
+          const response = await fetch("http://localhost:3000/user", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "Application/Json",
+            },
+          });
+          getUser()
+          alert("Usuário adicionado com sucesso!");
+        } catch (error) {
+          new Error(error);
+        }
+        console.log(response);
+        }
+    </script>
+</body>
+</html>
